@@ -1,0 +1,44 @@
+<form [formGroup]="forma" (ngSubmit)="guardar()">
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Nombre</label>
+        <input type="text" 
+              class="form-control" 
+              name="nombre" 
+              formControlName="nombre"
+              [class.is-invalid]="noValido('nombre')"
+              [class.is-valid]="siValido('nombre')">
+        <small *ngIf="noValido('nombre')" class="form-text text-danger">nombre no valido</small>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Apellidos</label>
+        <input type="text" 
+              class="form-control" 
+              name="apellidos" 
+              formControlName="apellidos"
+              [class.is-invalid]="noValido('apellidos')"
+              [class.is-valid]="siValido('apellidos')">
+        <small *ngIf="noValido('apellidos')" class="form-text text-danger">Apellidos no validos</small>
+      </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input type="email" 
+            class="form-control" 
+            name="email" 
+            formControlName="email"
+            [class.is-invalid]="noValido('email')"
+            [class.is-valid]="siValido('email')">
+      <small *ngIf="noValido('email')" class="form-text text-danger">Ingrese un correo valido</small>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input type="password" 
+            class="form-control" 
+            name="password" 
+            formControlName="password"
+            [class.is-invalid]="noValido('password')"
+            [class.is-valid]="siValido('password')">
+      <small *ngIf="noValido('password')" class="form-text text-danger">Password incorrecta</small>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Crear</button>
+</form>

@@ -1,0 +1,32 @@
+<div class="container m-5" *ngIf="categorias">
+  <h1>Productos de: {{categoria}}</h1>
+</div>
+<div class="container m-5" *ngIf="productosArr.length == 0">
+  <h3 class="text-danger">No hay productos disponibles</h3>
+</div>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    <div *ngFor="let producto of productosArr" class="col">
+      <div class="card h-100">
+        <img [src]="producto.imagen" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"> {{ producto.nombre }} </h5>
+          <p class="card-text"> {{ producto.descripcion }} </p>
+        </div>
+        <div class="card-footer">
+          <small class="text-dark"> <strike>${{producto.precio}} </strike> <mark>OFERTA   ${{producto.oferta}} </mark></small>
+          <button (click)="changeCar(producto.id)" [class.active]="carritoList.indexOf(producto.id) !== -1" class="btn btn-outline-primary container">
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cart-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8.5 5a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 .5-.5z"/>
+                <path fill-rule="evenodd" d="M8 7.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0v-2z"/>
+                <path fill-rule="evenodd" d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+              </svg>
+          </button>
+          <button (click)="changeFav(producto.id)" [class.active]="favoritos.indexOf(producto.id) !== -1" class="btn btn-outline-danger container">
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-suit-heart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z"/>
+              </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+</div>

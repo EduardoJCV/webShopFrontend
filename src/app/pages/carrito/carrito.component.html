@@ -1,0 +1,100 @@
+<div class="container">
+    <div class="card border-primary mb-12" *ngIf="cargado" >
+        <div class="card-header bg-transparent border-primary">Carrito De Compras</div>
+        <div class="card-body text-primary">
+
+
+            <div class="card mb-12" *ngFor="let producto of productos">
+                <div class="row g-0">
+                  <div class="col-md-2">
+                    <img class="brrr" [src]="producto.imagen" alt="asd">
+                  </div>
+                  <div class="col-md-6">
+                    <div class="card-body">
+                      <h5 class="card-title"> {{ producto.nombre }} </h5>
+                      <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="card-body">
+                        <div class="col-sm-12 my-12">
+                            <label class="">Cantidad:</label>
+                            <input #prod
+                                     ng-model="cantidad" 
+                                     (change)="change(prod.value, producto.oferta, producto.id)" 
+                                     value="1" min="1" 
+                                     type="number" 
+                                     class="form-control"
+                                     [(ngModel)]="producto.cantidad">
+                          </div>
+
+                        <div class="container">
+                            Precio por unidad: ${{ producto.oferta }}
+                        </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        
+        </div>
+        <div class="card-footer bg-transparent border-primary">
+
+            <div class="text-left">
+                <h3>Total: ${{total}}</h3>
+            </div>
+
+
+            <hr>
+
+            <h2>
+                Direccion de envio
+            </h2>
+
+            <hr>
+
+            <form autocomplete="off" [formGroup]="forma" (ngSubmit)="pagar()">
+                <div class="mb-3">
+                  <label for="estado" class="form-label">Estado</label>
+                  <input class="form-control"
+                  type="text"
+                  placeholder="estado"
+                  formControlName="estado"
+                  [class.is-invalid]="noValido('estado')"
+                  [class.is-valid]="siValido('estado')">
+                <small class="text-danger" *ngIf="noValido('estado')">El nombre debe tener minimo 4 letras</small>
+                </div>
+  
+                <div class="mb-3">
+                    <label for="ciudad" class="form-label">ciudad</label>
+                    <input class="form-control"
+                    type="text"
+                    placeholder="ciudad"
+                    formControlName="ciudad"
+                    [class.is-invalid]="noValido('ciudad')"
+                    [class.is-valid]="siValido('ciudad')">
+                  <small class="text-danger" *ngIf="noValido('ciudad')">El nombre debe tener minimo 4 letras</small>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="direccion" class="form-label">direccion</label>
+                    <input class="form-control"
+                    type="text"
+                    placeholder="direccion"
+                    formControlName="direccion"
+                    [class.is-invalid]="noValido('direccion')"
+                    [class.is-valid]="siValido('direccion')">
+                  <small class="text-danger" *ngIf="noValido('direccion')">El nombre debe tener minimo 4 letras</small>
+                  </div>
+
+                <div class="text-right">
+                    <button type="submit" class="btn btn-primary">Pagar</button>
+                </div>
+              </form>
+
+
+           
+            
+
+        </div>
+      </div>
+</div>

@@ -1,0 +1,15 @@
+
+<ul class="nav nav-tabs">
+    <li *ngIf="!logueado" class="nav-item">
+      <a class="nav-link" routerLinkActive="active" aria-current="page" [routerLink]="['login']">Login</a>
+    </li>
+    <li *ngIf="!logueado" class="nav-item">
+      <a class="nav-link" routerLinkActive="active" aria-current="page" [routerLink]="['singup']">Singup</a>
+    </li>
+    <li *ngIf="logueado" class="nav-item">
+      <a class="nav-link" routerLinkActive="active" aria-current="page" [routerLink]="['perfil-info']">Informacion De Perfil</a>
+    </li>
+  </ul>
+<div class="content m-5">
+    <router-outlet></router-outlet>
+</div>

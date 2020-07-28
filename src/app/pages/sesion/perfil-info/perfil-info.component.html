@@ -1,0 +1,55 @@
+
+
+<h2> {{ usuario.nombre }} {{ usuario.apellidos }}   <small> ({{ usuario.email }}) </small> </h2>
+<hr>
+
+<h5 *ngIf="usuario.rol == 'admin'" >
+    Rol: Admin Activo
+</h5>
+
+<hr>
+
+
+<footer class="footer">
+    <button class="btn btn-danger" (click)="logout()">Cerrar Sesion</button>
+</footer>
+
+<div class="container">
+    <hr>
+    
+    <h2>Pedidos</h2>
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Hora</th>
+            <th scope="col">Estado</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="cargado">
+          <tr *ngFor="let pedido of pedidos">
+            <th scope="row"> {{ pedido.id }} </th>
+            <td> {{ pedido.coste }} </td>
+            <td> {{ pedido.fecha }} </td>
+            <td> {{ pedido.hora }} </td>
+            <td> {{ pedido.estado }} </td>
+          </tr>
+        </tbody>
+      </table>
+
+
+    <hr>
+</div>
+
+
+<div class="container m-3">
+    <h2>Favoritos</h2>
+
+
+    <app-productos *ngIf="cargado" [productosArr]="productos">Hola</app-productos>
+
+    
+</div>
